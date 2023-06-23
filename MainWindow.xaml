@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwoDecksOfCard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="600">
+        Title="2DeckCard" Height="800" Width="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Deck number 1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" FontWeight="Bold"/>
+        <Label Content="Deck number 2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
+        <ListBox x:Name="Deck_1" Margin="10,60,10,0" Height="NaN" FontSize="20">
+            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </ListBox>
+        <ListBox x:Name="Deck_2" Grid.Column="1
+                 " Margin="10,60,10,0" Height="NaN" FontSize="20">
+            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </ListBox>
+        <Button Content="Tasuj" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="36"/>
+        <Button Content="Resetuj" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="36"/>
+        <Button Content="Opróznij" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="36"/>
+        <Button Content="Sortuj" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" FontSize="36"/>
 
     </Grid>
 </Window>

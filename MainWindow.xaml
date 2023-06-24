@@ -19,16 +19,17 @@
         <Label Content="Deck number 1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" FontWeight="Bold"/>
         <Label Content="Deck number 2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
         <ListBox x:Name="Deck_1" Margin="10,60,10,0" Height="NaN" FontSize="20">
-            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            
         </ListBox>
         <ListBox x:Name="Deck_2" Grid.Column="1
                  " Margin="10,60,10,0" Height="NaN" FontSize="20">
-            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDoubleClick="ListBoxItem_DoubleClicked"/>
+            
         </ListBox>
-        <Button Content="Tasuj" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="36"/>
-        <Button Content="Resetuj" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="36"/>
-        <Button Content="Opróznij" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="36"/>
-        <Button Content="Sortuj" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" FontSize="36"/>
+        <Button Content="Tasuj" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="36" Click="ButonShuffle_Clicked"/>
+        <Button Content="Resetuj" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="36" Click="ButonReset_Clicked"/>
+        <Button Content="Opróznij" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="36" Click="ButonEmpty_Clicked"/>
+        <Button Content="Sortuj" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" FontSize="36" Click="ButonSort_Clicked"/>
 
     </Grid>
 </Window>

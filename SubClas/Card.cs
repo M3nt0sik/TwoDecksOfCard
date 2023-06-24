@@ -21,7 +21,7 @@ namespace Game_Card
 
         public override string ToString()
         {
-            return $"{Value} {Suit}";
+            return Name;
         }
     }
 }

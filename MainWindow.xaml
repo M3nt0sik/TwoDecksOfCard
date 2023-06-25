@@ -23,20 +23,8 @@
             
 
         </ListBox>
-        <ListBox x:Name="Deck_2" Grid.Column="1
-                 " Margin="10,60,10,0" Height="NaN" FontSize="20">
-            <ItemsPanelTemplate>
-                <StackPanel HorizontalAlignment="Stretch">
-                    <StackPanel.Resources>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </StackPanel.Resources>
-                </StackPanel>
-                
-            </ItemsPanelTemplate>
-            
-            
+        <ListBox x:Name="Deck_2" Margin="10,60,10,0" Height="NaN" FontSize="20" HorizontalContentAlignment="Center" MouseDoubleClick="ListBoxItem_DoubleClicked" Grid.Column="1">
+               
         </ListBox>
         <Button Content="Tasuj" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="36" Click="ButonShuffle_Clicked"/>
         <Button Content="Resetuj" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="36" Click="ButonReset_Clicked"/>

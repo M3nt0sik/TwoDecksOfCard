@@ -24,30 +24,45 @@ namespace TwoDecksOfCard
     /// </summary>
     public partial class MainWindow : Window
     {
-        ListBoxItem toCoppyListBoXItem = new ListBoxItem();
+        Random random = new Random();
         List<Card> fullDeck = new List<Card>();
+        List<Card> List_Hand = new List<Card>();
 
         public MainWindow()
         {
             InitializeComponent();
             fullDeck = MakeFullDeck();
-            
-
             this.Deck_1.ItemsSource= fullDeck;
+            this.Deck_2.ItemsSource = List_Hand;
 
         }
 
         private void ListBoxItem_DoubleClicked(object sender, MouseButtonEventArgs e)
         {
-            if (sender is ListBox)
+            ListBox Sender = sender as ListBox;
+            if(Sender.Name == "Deck_1")
             {
                 string Name = "";
-                var objSender = sender as ListBox;
-                Name = objSender.SelectedValue.ToString();
+                Name = Sender.SelectedValue.ToString();
                 var toRemove = fullDeck.Find(x => x.Name.Contains(Name));
+                List_Hand.Add(toRemove);
                 fullDeck.Remove(toRemove);
                 this.Deck_1.ItemsSource = new List<Card>();
                 this.Deck_1.ItemsSource = fullDeck;
+                this.Deck_2.ItemsSource = new List<Card>();
+                this.Deck_2.ItemsSource = List_Hand;
+            }
+            else if(Sender.Name =="Deck_2")
+            {
+                string Name = "";
+                Name = Sender.SelectedValue.ToString();
+                var toRemove = List_Hand.Find(x => x.Name.Contains(Name));
+                fullDeck.Add(toRemove);
+                List_Hand.Remove(toRemove);
+                this.Deck_1.ItemsSource = new List<Card>();
+                this.Deck_1.ItemsSource = fullDeck;
+                this.Deck_2.ItemsSource = new List<Card>();
+                this.Deck_2.ItemsSource = List_Hand;
             }
         }
 
@@ -55,7 +70,16 @@ namespace TwoDecksOfCard
 
         private void ButonShuffle_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < fullDeck.Count; i++)
+            {
+                int raddom = random.Next(fullDeck.Count);
+                Card temp = fullDeck.ElementAt(raddom);
+                fullDeck[raddom] = fullDeck[i];
+                fullDeck[i] = temp;
+            }
+            this.Deck_1.ItemsSource = new List<Card>();
+            this.Deck_1.ItemsSource = fullDeck;
+
         }
       
         private void ButonReset_Clicked(object sender, RoutedEventArgs e)

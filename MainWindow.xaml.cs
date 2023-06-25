@@ -27,48 +27,28 @@ namespace TwoDecksOfCard
         ListBoxItem toCoppyListBoXItem = new ListBoxItem();
         List<Card> fullDeck = new List<Card>();
 
-       /* private void createNewItembox(ListBoxItem itemBox, string name)
-        {
-            toCoppyListBoXItem.Content = name;
-            toCoppyListBoXItem.HorizontalAlignment = HorizontalAlignment.Center;
-            toCoppyListBoXItem.VerticalAlignment = VerticalAlignment.Top;
-            toCoppyListBoXItem.MouseDoubleClick += ListBoxItem_DoubleClicked;
-        }*/
         public MainWindow()
         {
             InitializeComponent();
-                var counti  = Enum.GetValues(typeof(ESuit)).Length;
-                var countj = Enum.GetValues(typeof(EValue)).Length;
-                for (int i = 0; i < counti; i++)
-                {
-                    for(int j = 1;j < countj+1; j++)
-                    {
-                        fullDeck.Add(new Card((EValue)j, (ESuit)i));
-                    }
-                }
-            //createNewItembox(toCoppyListBoXItem,"Karta_2");
-            //Deck_1.Items.Add(toCoppyListBoXItem);
+            fullDeck = MakeFullDeck();
+            
 
             this.Deck_1.ItemsSource= fullDeck;
-           
-            
-                //.DisplayMember = "Name";
-
 
         }
 
         private void ListBoxItem_DoubleClicked(object sender, MouseButtonEventArgs e)
         {
-            
-            
-            Debug.WriteLine("DubleClicked!!");
-            string Name = sender.ToString().Replace("System.Windows.Controls.ListBoxItem: ","");
-            var toRemove = fullDeck.Find(x => x.Name.Contains(Name));
-            fullDeck.Remove(toRemove);
-            this.Deck_1.ItemsSource = new List<Card>();
-            this.Deck_1.ItemsSource= fullDeck;
-                
-            
+            if (sender is ListBox)
+            {
+                string Name = "";
+                var objSender = sender as ListBox;
+                Name = objSender.SelectedValue.ToString();
+                var toRemove = fullDeck.Find(x => x.Name.Contains(Name));
+                fullDeck.Remove(toRemove);
+                this.Deck_1.ItemsSource = new List<Card>();
+                this.Deck_1.ItemsSource = fullDeck;
+            }
         }
 
         
@@ -77,18 +57,10 @@ namespace TwoDecksOfCard
         {
             throw new NotImplementedException();
         }
+      
         private void ButonReset_Clicked(object sender, RoutedEventArgs e)
         {
-            var counti = Enum.GetValues(typeof(ESuit)).Length;
-            var countj = Enum.GetValues(typeof(EValue)).Length;
-            fullDeck.Clear();
-            for (int i = 0; i < counti; i++)
-            {
-                for (int j = 1; j < countj+1; j++)
-                {
-                    fullDeck.Add(new Card((EValue)j, (ESuit)i));
-                }
-            }
+            fullDeck = MakeFullDeck();
             this.Deck_1.ItemsSource = new List<Card>();
             this.Deck_1.ItemsSource = fullDeck;
         }
@@ -100,7 +72,26 @@ namespace TwoDecksOfCard
         {
             throw new NotImplementedException();
         }
+        ///<summary>
+        ///This function create List of object Card for each item in ESuit*Evalue
+        ///</summary>
+        private  List<Card> MakeFullDeck()
+        {
+            List<Card> fDeck = new List<Card>();
+            var counti = Enum.GetValues(typeof(ESuit)).Length;
+            var countj = Enum.GetValues(typeof(EValue)).Length;
+            for (int i = 0; i < counti; i++)
+            {
+                for (int j = 1; j < countj + 1; j++)
+                {
+                    fDeck.Add(new Card((EValue)j, (ESuit)i));
+                }
+            }
+            return fDeck;
+            
+        }
     }
+    
  
 }
 

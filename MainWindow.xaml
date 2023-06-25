@@ -18,18 +18,24 @@
         </Grid.ColumnDefinitions>
         <Label Content="Deck number 1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" FontWeight="Bold"/>
         <Label Content="Deck number 2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,5" FontSize="22" Grid.Column="1" FontWeight="Bold"/>
-        <ListBox x:Name="Deck_1" Margin="10,60,10,0" Height="NaN" FontSize="20" HorizontalContentAlignment="Center" >
+        <ListBox x:Name="Deck_1" Margin="10,60,10,0" Height="NaN" FontSize="20" HorizontalContentAlignment="Center" MouseDoubleClick="ListBoxItem_DoubleClicked">
             
-            <ListBox.ItemTemplate >
-                <DataTemplate>
-                    <ListBoxItem Content="{Binding Name}"  HorizontalAlignment="Center" VerticalAlignment="Top" MouseDoubleClick="ListBoxItem_DoubleClicked"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+            
 
         </ListBox>
         <ListBox x:Name="Deck_2" Grid.Column="1
                  " Margin="10,60,10,0" Height="NaN" FontSize="20">
-            <ListBoxItem Content="karta_1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ItemsPanelTemplate>
+                <StackPanel HorizontalAlignment="Stretch">
+                    <StackPanel.Resources>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </StackPanel.Resources>
+                </StackPanel>
+                
+            </ItemsPanelTemplate>
+            
             
         </ListBox>
         <Button Content="Tasuj" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="36" Click="ButonShuffle_Clicked"/>

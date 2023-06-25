@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Game_Card;
+using RandomCardList;
 
 namespace TwoDecksOfCard
 {
@@ -96,7 +97,10 @@ namespace TwoDecksOfCard
         }
         private void ButonSort_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            List_Hand.Sort( new CardComparerByValue());
+            Deck_2.ItemsSource = new List<Card>();
+            Deck_2.ItemsSource = List_Hand;
+            
         }
         ///<summary>
         ///This function create List of object Card for each item in ESuit*Evalue

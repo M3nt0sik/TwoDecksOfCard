@@ -90,7 +90,9 @@ namespace TwoDecksOfCard
         }
         private void ButonEmpty_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            List_Hand.Clear();
+            this.Deck_2.ItemsSource = new List<Card>();
+            
         }
         private void ButonSort_Clicked(object sender, RoutedEventArgs e)
         {
